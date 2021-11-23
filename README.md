@@ -1,2 +1,3 @@
-# roxssas
-RoXs S.A.S
+# RoXs S.A.S
+
+Vuejs & Vuetify website.s

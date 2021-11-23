@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html translate="no">
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+  <title>RoXs S.A.S</title>
+</head>
+<body>
+  <div id="app" >
+    <v-app >
+      <v-main>
+        <!-- NAVBAR -->
+        <v-app-bar>
+          <v-img src="./img/logo.png" max-width="5%"  class="mr-4 d-none d-md-flex"></v-img>
+          <!-- <v-img src="./img/logo.png" max-width="20%" align="center" justify="center"  class="mr-4 d-md-none d-lg-none d-xl-none"></v-img> -->
+          <!-- <v-img src="./img/logo.png" max-width="5%"  class="mr-4" v-show="$vuetify.breakpoint.md"></v-img> -->
+          <!-- <v-app-bar-title class="d-none d-md-flex">RoXs S.A.S</v-app-bar-title> -->
+          <v-app-bar-title>RoXs S.A.S</v-app-bar-title>
+          <v-spacer></v-spacer>
+          <v-btn text class="d-none d-md-flex">
+            Quienes Somos
+          </v-btn>
+          <!-- <v-app-bar-nav-icon class="mr-4 d-md-none d-lg-none d-xl-none"></v-app-bar-nav-icon> -->
+          <v-menu offset-y>
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn icon v-bind="attrs" v-on="on" ><v-icon>mdi-menu</v-icon></v-btn>
+            </template>
+            <v-list>
+              <v-list-item v-for="(item, index) in menu" :key="index" >
+                <v-list-item-title @click="item.value=true">{{ item.title }}</v-list-item-title>
+              </v-list-item>
+            </v-list>
+          </v-menu>
+        </v-app-bar>
+        
+        <!-- VISTA -->
+        <!-- <v-container fill-height fluid class="gradient-bg"> -->
+          <v-container fill-height fluid class="gradient-bg-grey">
+            <v-container align="center" justify="center">
+              <v-img src="./img/logo.png" width="50%" class="d-md-none d-lg-none d-xl-none" ></v-img>
+            </v-container>
+            <v-container align="center" justify="center" class="d-flex mx-auto" v-for="card in cards" :key="card.title" >
+              <v-card class="elevation-6" max-width="50%">
+                  <v-card-title>{{card.title}}</v-card-title>
+                  <v-card-text>{{card.text}}</v-card-text>
+                  <v-divider></v-divider>
+                  <v-card-text class="" align="center" justify="center">
+                    <v-img :src="card.src" ></v-img>
+                  </v-card-text>
+              </v-card>
+            </v-container>
+            <!-- <v-row >
+              <v-col cols="12" lg="11" align="center" justify="center">
+                <v-img src="./img/logo.png" width="50%" class="d-md-none d-lg-none d-xl-none" ></v-img>
+              </v-col>
+            </v-row>
+            <v-row align="center" justify="center">
+              <v-col cols="12" lg="4" sm="12" v-for="card in cards" align="center" :key="card.title">
+                <v-card class="elevation-6" >
+                    <v-card-title>
+                      {{card.title}}
+                    </v-card-title>
+                    <v-card-text>
+                      {{card.text}}
+                    </v-card-text>
+                    <v-divider></v-divider>
+                    <v-card-text class="" align="center" justify="center">
+                      <v-img :src="card.src" ></v-img>
+                    </v-card-text>
+                </v-card>
+              </v-col>
+            </v-row> -->
+        </v-container>
+        
+        <!-- FOOTER -->
+        <v-footer padless>
+        <!-- <v-footer v-bind="localAttrs" padless> -->
+          <v-card flat tile width="100%" class=" text-center">
+            <v-card-text>
+              <v-btn v-for="item in icons" :key="item.icon" class="mx-4" icon :href="item.href">
+                <v-icon size="24px">{{ item.icon }}</v-icon>
+              </v-btn>
+            </v-card-text>
+            <v-divider></v-divider>
+            <v-card-text>
+              2021 — <strong>RoXs S.A.S</strong>
+            </v-card-text>
+          </v-card>
+        </v-footer>
+      </v-main>
+    </v-app>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+  <script type="module">
+    new Vue({
+      el: '#app',
+      vuetify: new Vuetify(),
+      data : {
+        menu : [
+          {title : 'QUIENES SOMOS', value : false},
+          {title : 'CONTACTO', value : false},
+        ],
+        icons: [
+        //'mdi-home',
+        //'mdi-email',
+        //'mdi-facebook',
+        //'mdi-instagram',
+        {icon : 'mdi-email', href : 'mailto:email@email.com'},
+        {icon : 'mdi-facebook', href : 'https://facebook.com'},
+        {icon : 'mdi-instagram', href : 'https://instagram.com'},
+        //'mdi-calendar',
+        //'mdi-delete',
+      ],
+      cards : [
+        {title : 'Titulo 1', text : 'Lorem ipsum dolorem 1', src : './img/led1.png'},
+        {title : 'Titulo 2', text : 'Lorem ipsum dolorem 2', src : './img/led2.png'},
+        {title : 'Titulo 3', text : 'Lorem ipsum dolorem 3', src : './img/led3.jpeg'},
+      ]
+      },
+      methods: {
+
+      }
+    })
+  </script>
+  <style scope>
+    .gradient-bg {
+        background-color: #3A1C71;
+        background: -webkit-linear-gradient(to right, #FFAF7B, #D76D77, #3A1C71);
+        background: linear-gradient(to right, #FFAF7B, #D76D77, #3A1C71);
+        height: 100% !important;
+    }
+    .gradient-bg-grey {
+        background-color: #3A1C71;
+        background: -webkit-linear-gradient(to bottom, #ffffff, #7e7e7e, #4d4d4d);
+        background: linear-gradient(to bottom, #ffffff, #7e7e7e, #4d4d4d);
+        height: 100% !important;
+    }
+  </style>
+</body>
+</html>
