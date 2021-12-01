@@ -14,18 +14,15 @@
         <!-- NAVBAR -->
         <v-app-bar>
           <v-img src="./img/logo.png" max-width="5%"  class="mr-4 d-none d-md-flex"></v-img>
-          <!-- <v-img src="./img/logo.png" max-width="20%" align="center" justify="center"  class="mr-4 d-md-none d-lg-none d-xl-none"></v-img> -->
-          <!-- <v-img src="./img/logo.png" max-width="5%"  class="mr-4" v-show="$vuetify.breakpoint.md"></v-img> -->
-          <!-- <v-app-bar-title class="d-none d-md-flex">RoXs S.A.S</v-app-bar-title> -->
-          <v-app-bar-title>RoXs S.A.S</v-app-bar-title>
+          <v-app-bar-title><span class="d-none d-lg-block">RoXs S.A.S  - Insumos electricos</span></v-app-bar-title>
+          <v-app-bar-title><span class="d-lg-none">RoXs S.A.S</span></v-app-bar-title>
           <v-spacer></v-spacer>
-          <v-btn text class="d-none d-md-flex">
-            Quienes Somos
+          <v-btn v-for="(page,i) in menu" :key="i" small text class="d-none d-md-flex mr-1">
+            {{page.title}}
           </v-btn>
-          <!-- <v-app-bar-nav-icon class="mr-4 d-md-none d-lg-none d-xl-none"></v-app-bar-nav-icon> -->
           <v-menu offset-y>
             <template v-slot:activator="{ on, attrs }">
-              <v-btn icon v-bind="attrs" v-on="on" ><v-icon>mdi-menu</v-icon></v-btn>
+              <v-btn class="d-md-none d-lg-none d-xl-none" icon v-bind="attrs" v-on="on" ><v-icon>mdi-menu</v-icon></v-btn>
             </template>
             <v-list>
               <v-list-item v-for="(item, index) in menu" :key="index" >
@@ -38,18 +35,23 @@
         <!-- VISTA -->
         <!-- <v-container fill-height fluid class="gradient-bg"> -->
           <v-container fill-height fluid class="gradient-bg-grey">
-            <v-container align="center" justify="center">
-              <v-img src="./img/logo.png" width="50%" class="d-md-none d-lg-none d-xl-none" ></v-img>
+            <v-container class="text-center">
+              <v-img src="./img/logo.png" max-width="200px" class="mx-auto d-md-none d-lg-none d-xl-none" ></v-img>
+              <h3 class="d-md-none d-lg-none d-xl-none">Insumos electricos</h3>
             </v-container>
-            <v-container align="center" justify="center" class="d-flex mx-auto" v-for="card in cards" :key="card.title" >
-              <v-card class="elevation-6" max-width="50%">
-                  <v-card-title>{{card.title}}</v-card-title>
-                  <v-card-text>{{card.text}}</v-card-text>
-                  <v-divider></v-divider>
-                  <v-card-text class="" align="center" justify="center">
-                    <v-img :src="card.src" ></v-img>
-                  </v-card-text>
-              </v-card>
+            <v-container v-for="(card,i) in cards" :key="i" >
+              <v-row align="center" justify="center">
+                <v-col cols="12" sm="12" md="8" lg="6">
+                  <v-card class="elevation-6">
+                      <v-card-title>{{card.title}}</v-card-title>
+                      <v-card-text>{{card.text}}</v-card-text>
+                      <v-divider></v-divider>
+                      <v-card-text class="" align="center" justify="center">
+                        <v-img :src="card.src" ></v-img>
+                      </v-card-text>
+                  </v-card>
+                </v-col>
+              </v-row>
             </v-container>
             <!-- <v-row >
               <v-col cols="12" lg="11" align="center" justify="center">

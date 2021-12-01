@@ -1,3 +1,5 @@
 # RoXs S.A.S
 
-Vuejs & Vuetify website.s
+Vuejs & Vuetify SPA
+
+https://bakeluco.github.io/roxssas/
