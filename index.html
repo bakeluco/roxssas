@@ -12,7 +12,7 @@
     <v-app >
       <v-main>
         <!-- NAVBAR -->
-        <v-app-bar>
+        <v-app-bar fixed>
           <v-img src="./img/logo.png" max-width="5%"  class="mr-4 d-none d-md-flex"></v-img>
           <v-app-bar-title><span class="d-none d-lg-block">RoXs S.A.S  - Insumos electricos</span></v-app-bar-title>
           <v-app-bar-title><span class="d-lg-none">RoXs S.A.S</span></v-app-bar-title>
@@ -35,10 +35,66 @@
         <!-- VISTA -->
         <!-- <v-container fill-height fluid class="gradient-bg"> -->
           <v-container fill-height fluid class="gradient-bg-grey">
-            <v-container class="text-center">
-              <v-img src="./img/logo.png" max-width="200px" class="mx-auto d-md-none d-lg-none d-xl-none" ></v-img>
-              <h3 class="d-md-none d-lg-none d-xl-none">Insumos electricos</h3>
+            <!-- CAROUSEL -->
+            <v-container fluid class="mt-12 grey lighten-1">
+              <v-carousel :show-arrows="false" hide-delimiter-background>
+                <v-carousel-item
+                v-for="(item,i) in carousel"
+                :key="i"
+                :src="item.src"
+                >
+                <v-container  text-center fill-height >
+                  <v-card color="rgb(255, 255, 255, 0.6)" align-center class="mx-auto  pa-2 rounded">
+                    <v-img src="./img/logo.png" max-width="200px" ></v-img>
+                    <h3 class="">Insumos electricos</h3>
+                  </v-card>
+                </v-container>
+              </v-carousel-item>
+            </v-carousel>
+          </v-container>
+          <!-- ADVANTAGES -->
+          <v-container fluid class="py-10 grey lighten-2">
+            <v-row align="center" justify="center">
+              <v-col v-for="(item,i) in advantagesTop" :key="i" cols="12" md="3">
+                <v-card>
+                  <v-card-title>{{item.title}}</v-card-title>
+                  <v-card-text>{{item.text}}</v-card-text>
+                </v-card>
+                </v-col>
+              </v-row>
+              <v-row align="center" justify="center">
+                <v-col v-for="(item,i) in advantagesBottom" :key="i" cols="12" md="3">
+                  <v-card>
+                    <v-card-title>{{item.title}}</v-card-title>
+                    <v-card-text>{{item.text}}</v-card-text>
+                  </v-card>
+                </v-col>
+              </v-row>
             </v-container>
+            <!-- HOT SALE -->
+            <v-container fluid class="py-6 grey lighten-1">
+              <v-container class="green lighten-2 rounded">
+                <h3 class="text-center mb-2">Hot Sale LED Light Categories</h3 class="text-center">
+                  <p>We manufacture a wide range of LED lights for Commercial Lighting, Industrial Lighting, Outdoor Lighting, RGB Lighting and Solar Lighting.</p>
+                </v-container>
+              </v-container>
+              <!-- PRODUCTS -->
+              <v-container fluid class="py-6 grey lighten-2">
+                <v-row align="center" justify="center">
+                  <v-col v-for="(item,i) in products" :key="i" cols="12" md="4">
+                    <v-card>
+                      <v-card-title>{{item.title}}</v-card-title>
+                      <v-img :src="item.src"></v-img>
+                    </v-card>
+                  </v-col>
+                </v-row>
+              </v-container>
+              <!-- LOGO -->
+              <v-container class="text-center">
+                <v-img src="./img/logo.png" max-width="200px" class="mt-12 mx-auto d-md-none d-lg-none d-xl-none" ></v-img>
+                <h3 class="d-md-none d-lg-none d-xl-none">Insumos electricos</h3>
+              </v-container>
+            <!-- PRODUCTS -->
             <v-container v-for="(card,i) in cards" :key="i" >
               <v-row align="center" justify="center">
                 <v-col cols="12" sm="12" md="8" lg="6">
@@ -107,21 +163,47 @@
           {title : 'CONTACTO', value : false},
         ],
         icons: [
-        //'mdi-home',
-        //'mdi-email',
-        //'mdi-facebook',
-        //'mdi-instagram',
-        {icon : 'mdi-email', href : 'mailto:email@email.com'},
-        {icon : 'mdi-facebook', href : 'https://facebook.com'},
-        {icon : 'mdi-instagram', href : 'https://instagram.com'},
-        //'mdi-calendar',
-        //'mdi-delete',
-      ],
-      cards : [
-        {title : 'Titulo 1', text : 'Lorem ipsum dolorem 1', src : './img/led1.png'},
-        {title : 'Titulo 2', text : 'Lorem ipsum dolorem 2', src : './img/led2.png'},
-        {title : 'Titulo 3', text : 'Lorem ipsum dolorem 3', src : './img/led3.jpeg'},
-      ]
+          //'mdi-home',
+          //'mdi-email',
+          //'mdi-facebook',
+          //'mdi-instagram',
+          {icon : 'mdi-email', href : 'mailto:email@email.com'},
+          {icon : 'mdi-facebook', href : 'https://facebook.com'},
+          {icon : 'mdi-instagram', href : 'https://instagram.com'},
+          //'mdi-calendar',
+          //'mdi-delete',
+        ],
+        cards : [
+          {title : 'Titulo 1', text : 'Lorem ipsum dolorem 1', src : './img/led1.png'},
+          {title : 'Titulo 2', text : 'Lorem ipsum dolorem 2', src : './img/led2.png'},
+          {title : 'Titulo 3', text : 'Lorem ipsum dolorem 3', src : './img/led3.jpeg'},
+        ],
+        carousel : [
+          { src: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.uksfbooknews.net%2Ffile%2F2020%2F06%2F358C418B00000578-0-image-a-8_1466600282895.jpg&f=1&nofb=1', },
+          { src: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi0.wp.com%2Fenterpriseiotinsights.com%2Fwp-content%2Fuploads%2F2019%2F02%2FItron.jpg%3Ffit%3D2000%252C1189%26ssl%3D1&f=1&nofb=1', },
+          { src: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.1xHjqnOMqA52_H_4qnftAAHaHa%26pid%3DApi&f=1', },
+        ],
+        advantagesTop : [
+          { icon : '', title : 'Our Mission', text : 'Customers can buy the best LED lighting products from us with satisfaction and happiness.'},
+          { icon : '', title : 'Top Quality', text : 'All our LED chips and drivers are from famous brands. 3-5 years warranty is provided.'},
+          { icon : '', title : '50+ LED Lights', text : 'We manufacture 50+ various kinds of LED lights from indoor to outdoor lighting.'},
+        ],
+        advantagesBottom : [
+          { icon : '', title : 'Direct Factory Price', text : 'Help you save money and help you make money by offering our lowest factory price.'},
+          { icon : '', title : '10+ Years OEM', text : 'Help you make your brand and customize LED lights as your requirement or budget.'},
+          { icon : '', title : '15+ Hours Service', text : 'Don\'t hesitate to call us, email us, whatsapp us, wechat us, skype us. We are eager to talk to you.'},
+        ],
+        products : [
+          { src : 'https://www.geramled.com/wp-content/uploads/2020/07/led-flood-light-manufacturer-in-china.jpg', title : 'LED Flood Light', },
+          { src : 'https://www.geramled.com/wp-content/uploads/2020/07/led-street-light-manufacturer-in-china.jpg', title : 'LED Street Light', },
+          { src : 'https://www.geramled.com/wp-content/uploads/2020/07/rgb-led-light-manufacturer-in-china.jpg', title : 'RGB LED Light', },
+          { src : 'https://www.geramled.com/wp-content/uploads/2021/03/led-strip-light-tape-light-rope-light-manufacturer-in-china.jpg', title : 'LED Strip Light', },
+          { src : 'https://www.geramled.com/wp-content/uploads/2020/07/led-high-bay-light-manufacturer-in-china.jpg', title : 'LED High Bay Light', },
+          { src : 'https://www.geramled.com/wp-content/uploads/2020/07/solar-led-street-light-manufacturer-in-china.jpg', title : 'Solar LED Light', },
+          { src : 'https://www.geramled.com/wp-content/uploads/2021/09/commercial-led-grow-lights-manufacturer-supplier-in-china.jpg', title : 'LED Grow Light', },
+          { src : 'https://www.geramled.com/wp-content/uploads/2021/03/led-panel-light-manufactures-suppliers-factory-in-china.jpg', title : 'LED Panel Light', },
+          { src : 'https://www.geramled.com/wp-content/uploads/2021/03/led-tube-light-manufactures-suppliers-factory-in-china.jpg', title : 'LED Tube Light', },
+        ],
       },
       methods: {
 
